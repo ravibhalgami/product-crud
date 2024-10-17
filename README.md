@@ -95,7 +95,7 @@ WINSTON_LOG_DIR=./logs
 
 Make sure to configure Firebase properly and download the firebase-service-account.json file. Place it in the project root directory.
 
-### Create an Admin account
+### Setting Up an Admin Account
 
 To access the admin section, you can create an admin account using the credentials admin@demo.com with the password Admin@12345 by running the following command:
 
