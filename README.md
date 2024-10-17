@@ -9,7 +9,7 @@ This project is a **NestJS backend** providing REST API endpoints for user signu
 Ensure you have the following installed on your system:
 
 - **Node.js**: `^v18.19.1`
-- **NestJS CLI**: `^v17.3.10`
+- **NestJS CLI**: `^v10.4.5`
 - **MongoDB**: A local or cloud MongoDB instance
 - **Firebase Account**: For image storage
 
