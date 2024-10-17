@@ -1,85 +1,101 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🚀 NestJS Project: REST API for User & Admin Management
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## 📋 Overview
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This project is a **NestJS backend** providing REST API endpoints for user signup, login, product management, and admin functionalities. It uses **MongoDB** via **Mongoose ORM** and integrates **Firebase** for image storage.
 
-## Description
+## 🔧 Requirements
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Ensure you have the following installed on your system:
 
-## Project setup
+- **Node.js**: `^v18.19.1`
+- **NestJS CLI**: `^v17.3.10`
+- **MongoDB**: A local or cloud MongoDB instance
+- **Firebase Account**: For image storage
+
+## 🚀 Features
+
+### User Features
+
+- **User Registration**: Create a new user account with full validation.
+- **User Login**: Login using the registered email and password.
+- **Product Management**: Users can perform CRUD operations on products:
+  - Create, read, update, and soft delete products.
+  - Products include fields for name, description, and image (stored in Firebase).
+
+### Admin Features
+
+- **Admin Dashboard**:
+  - View all registered users and manage their activation status (active/inactive).
+  - View all products with detailed info on their creators (users).
+  - Perform search and filter actions on products and users by keywords and date ranges.
+
+### Security & Authentication
+
+- **JWT Authentication**: Secure login and user sessions with JWT tokens.
+
+### Server-Side Pagination
+
+- **Pagination**: Implement server-side pagination for user and product listings to handle large datasets efficiently.
+
+### Error Handling & API Logging
+
+- **Error Handling**: Proper error messages and response codes for all API routes.
+- **Logging**: Log every API request and response, along with execution duration and timestamps, using **Winston**.
+
+### Firebase Integration
+
+- **Firebase**: Integrated for image storage (e.g., product images), ensuring media is handled efficiently.
+
+## ⚙️ Installation
+
+Follow these steps to set up and run the project:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/ravibhalgami/product-crud
+   cd product-crud
+   ```
+
+2. **Install dependencies**:
 
 ```bash
-$ npm install
+npm install
 ```
 
-## Compile and run the project
+3. **Set up environment variables**:
+
+- Configure MongoDB, Firebase, JWT, and Winston log directory in your .env file.
+
+3. **Start the development server**:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run start
 ```
 
-## Run tests
+The app will be accessible at http://localhost:3000.
+
+## 🔨 Configuration
+
+You need to set up the NestJS API with the proper environment configuration. Add the following variables in your .env file:
+
+### Example .env
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+PORT=3000
+MONGO_URI=mongodb://localhost:27017/your-database
+FIREBASE_BUCKET=your-firebase-bucket
+JWT_SECRET=your-jwt-secret
+JWT_EXPIRED_TIME=1h
+WINSTON_LOG_DIR=./logs
 ```
 
-## Resources
+### Firebase Setup
 
-Check out a few resources that may come in handy when working with NestJS:
+Make sure to configure Firebase properly and download the firebase-service-account.json file. Place it in the project root directory.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## 💡 Additional Notes
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- Firebase: Ensure Firebase is configured correctly for media storage.
+- Logging: All API requests are logged, including request duration and timestamps for debugging and monitoring purposes.
